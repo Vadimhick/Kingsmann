@@ -1,0 +1,130 @@
+﻿<Window x:Class="Kingsman.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kingsman"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="770" Width="1100" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Список услуг"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="30"
+                   FontWeight="Bold" FontFamily="Calibri"/>
+        <ListView x:Name="LvService" 
+                  Grid.Row="2" 
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Gray"
+                            BorderThickness="2"
+                            Width="200"
+                            Height="350"
+                            Margin="16"
+                            CornerRadius="8">
+                        <StackPanel>
+                            <Image Height="180"
+                                   Width="200" 
+                                   Margin="8">
+                                <Image.Source>
+                                    <Binding Path ="Image">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>/Res/Clothes/noImage.jpeg</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+
+                            <TextBlock Text="{Binding NameService}"
+                                       FontSize="18"
+                                       Margin="5 3"/>
+                            <TextBlock Text="{Binding Price}"
+                                       FontSize="18"
+                                       Margin="5 3"/>
+                            <TextBlock Text="{Binding Description}"
+                                       FontSize="18"
+                                       Margin="5 3"
+                                       TextWrapping="Wrap" FontFamily="Arial Rounded MT Bold"/>
+                            <Button x:Name="BtnEditService"
+                                      Grid.Row="3"
+                                      Width="40"
+                                      Height="40"
+                                      Background="{x:Null}"
+                                      BorderThickness="0"
+                                      HorizontalAlignment="Left"
+                                      Margin="0 0 20 0"
+                                      Click="BtnEditService_Click">
+                                <Image Source="/Res/Images/Edit.png"/>
+                            </Button>
+                        </StackPanel>
+
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button x:Name="BtnAddService"
+                Grid.Row="3"
+                Width="40"
+                Height="40"
+                Background="Black"
+                BorderThickness="0"
+                HorizontalAlignment="Right"
+                Margin="0 0 20 0"
+                Click="BtnAddService_Click">
+            <Image Source="/Res/Images/Add.png"/>
+        </Button>
+        <Button x:Name="BtnService"
+                Content="Услуги"
+                Grid.Row="3"
+                Width="70"
+                Height="40"
+                Background="#FF2906A7"
+                BorderThickness="0"
+                HorizontalAlignment="Left"
+                Margin="0 0 20 0" FontFamily="Calibri" FontSize="16" Foreground="#FFFFAF00"
+                >
+            
+        </Button>
+        <Button x:Name="BtnClient"
+                Content="Клиенты"
+                Grid.Row="4"
+                Width="70"
+                Height="40"
+                Background="#FF2906A7"
+                BorderThickness="0"
+                HorizontalAlignment="Left"
+                Margin="80 0 20 0"
+                Click="BtnClient_Click" FontFamily="Calibri" FontSize="16" Foreground="#FFFFAF00">
+
+        </Button>
+        <Button x:Name="BtnEmploye"
+                Content="Работники"
+                Grid.Row="3"
+                Width="70"
+                Height="40"
+                Background="#FF2906A7"
+                BorderThickness="0"
+                HorizontalAlignment="Left"
+                Margin="160 0 20 0"
+                Click="BtnEmploye_Click" FontFamily="Calibri" FontSize="16" Foreground="#FFFFAF00">
+
+        </Button>
+
+    </Grid>
+</Window>
